@@ -2,7 +2,11 @@
 
 import { SessionInterface } from "@/common.types";
 import Image from "next/image";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
+import FormField from "./FormField";
+import { categoryFilters } from "@/constants";
+import CustomMenu from "./CustomMenu";
+import Button from "./Button";
 
 type Props = {
   type: string;
@@ -10,12 +14,51 @@ type Props = {
 };
 
 const ProjectForm = ({ type, session }: Props) => {
-  const handleFormSubmit = (e: React.FormEvent) => {};
-  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {};
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  const form = {
-    image: "",
+    setIsSubmitting(true);
+
+    try {
+      if (type === "create") {
+      }
+    } catch (error) {}
   };
+
+  const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.includes("image")) {
+      return alert("Please upload an image file");
+    }
+
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onload = () => {
+      const result = reader.result as string;
+
+      handleStateChange("image", result);
+    };
+  };
+
+  const handleStateChange = (fieldname: string, value: string) => {
+    setForm((prevState) => ({ ...prevState, [fieldname]: value }));
+  };
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({
+    title: "",
+    description: "",
+    image: "",
+    liveSiteUrl: "",
+    githubUrl: "",
+    category: "",
+  });
 
   return (
     <form onSubmit={handleFormSubmit} className="flexStart form">
@@ -47,6 +90,46 @@ const ProjectForm = ({ type, session }: Props) => {
         placeholder="Flexibble"
         setState={(value) => handleStateChange("title", value)}
       />
+      <FormField
+        title="Description"
+        state={form.description}
+        placeholder="Showcase and discover remarkable developer projects."
+        setState={(value) => handleStateChange("description", value)}
+      />
+      <FormField
+        title="Website URL"
+        state={form.liveSiteUrl}
+        placeholder="http://yoursite.com"
+        setState={(value) => handleStateChange("liveSiteUrl", value)}
+        type="url"
+      />
+      <FormField
+        title="GitHub URL"
+        state={form.githubUrl}
+        placeholder="https://github.com/youruser"
+        setState={(value) => handleStateChange("githubUrl", value)}
+        type="url"
+      />
+
+      <CustomMenu
+        title="Category"
+        state={form.category}
+        filters={categoryFilters}
+        setState={(value) => handleStateChange("category", value)}
+      />
+
+      <div className="flexStart w-full">
+        <Button
+          title={
+            isSubmitting
+              ? `${type === "create" ? "Creating" : "Editing"}`
+              : `${type === "create" ? "Create" : "Edit"}`
+          }
+          type="submit"
+          leftIcon={isSubmitting ? "" : "/plus.svg"}
+          isSubmitting={isSubmitting}
+        />
+      </div>
     </form>
   );
 };
