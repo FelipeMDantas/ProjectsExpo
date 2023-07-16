@@ -37,8 +37,15 @@ export const createUser = (name: string, email: string, avatarUrl: string) => {
 
 export const uploadImage = async (imagePath: string) => {
   try {
-    const response = await fetch(`${serverUrl}/api/upload`, {});
-  } catch (error) {}
+    const response = await fetch(`${serverUrl}/api/upload`, {
+      method: "POST",
+      body: JSON.stringify({ path: imagePath }),
+    });
+
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const createNewProject = async (
@@ -47,4 +54,8 @@ export const createNewProject = async (
   token: string
 ) => {
   const imageUrl = await uploadImage(form.image);
+
+  if (imageUrl.url) {
+    return makeGraphQLRequest(createProjectMutation, variables);
+  }
 };
