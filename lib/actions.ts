@@ -15,13 +15,12 @@ const apiKey = isProduction
   ? process.env.NEXT_PUBLIC_GRAFBASE_API_KEY || ""
   : "letmein";
 const serverUrl = isProduction
-  ? process.env.NEXT_PUBLIC_SERVER_UR
+  ? process.env.NEXT_PUBLIC_SERVER_URL
   : "http://localhost:3000";
 
 const client = new GraphQLClient(apiUrl);
 
 const makeGraphQLRequest = async (query: string, variables = {}) => {
-  console.log(query, variables);
   try {
     return await client.request(query, variables);
   } catch (error) {
