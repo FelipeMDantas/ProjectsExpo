@@ -18,7 +18,6 @@ const Home = async () => {
   const data = (await fetchAllProjects()) as ProjectSearch;
 
   const projectsToDisplay = data?.projectSearch?.edges || [];
-  console.log(projectsToDisplay);
 
   if (projectsToDisplay.length === 0) {
     return (
