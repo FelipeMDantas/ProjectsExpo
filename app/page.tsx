@@ -46,7 +46,7 @@ const Home = async () => {
           />
         ))}
       </section>
-      <h1>LoadMore</h1>
+      <h1>Load More</h1>
     </section>
   );
 };
