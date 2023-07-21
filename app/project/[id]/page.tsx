@@ -7,6 +7,7 @@ import { getProjectDetails } from "@/lib/actions";
 import { ProjectInterface } from "@/common.types";
 import Modal from "@/app/components/Modal";
 import RelatedProjects from "@/app/components/RelatedProjects";
+import ProjectActions from "@/app/components/ProjectActions";
 
 const Project = async ({ params: { id } }: { params: { id: string } }) => {
   const session = await getCurrentUser();
@@ -54,7 +55,7 @@ const Project = async ({ params: { id } }: { params: { id: string } }) => {
 
         {session?.user?.email === projectDetails?.createdBy?.email && (
           <div className="flex justify-end items-center gap-2">
-            {/*<ProjectActions projectId={projectDetails?.id} />*/}
+            <ProjectActions projectId={projectDetails?.id} />
           </div>
         )}
       </section>
