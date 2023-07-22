@@ -39,6 +39,7 @@ const ProjectActions = ({ projectId }: { projectId: string }) => {
         className={`flexCenter delete-action_btn ${
           isDeleting ? "bg-gray" : "bg-primary-purple"
         }`}
+        onClick={handleDeleteProject}
       >
         <Image src="/trash.svg" width={15} height={15} alt="delete" />
       </button>
