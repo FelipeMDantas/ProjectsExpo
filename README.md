@@ -17,15 +17,19 @@ A couple of technologies were employed in this project. Among them:
 - [ReactJS] - a JavaScript library for building user interfaces
 - [NextJS] - a React framework that gives you building blocks to create web applications
 - [TypeScript] - a strongly typed programming language that builds on JavaScript
+- [Headless UI] - provides unstyled and accessible UI components designed to integrate with Tailwind
 - [NPM] - a package manager
 - [Tailwind] - a utility-first CSS framework
 - [Cloudinary] - an Image and Video API
+- [Grafbase] - provides schema-first configuration
 - [Prettier] - a code formatter
 
   [reactjs]: https://reactjs.org/
   [nextjs]: https://nextjs.org/
   [npm]: https://www.npmjs.com/
   [typescript]: https://www.typescriptlang.org/
+  [headless ui]: https://headlessui.com/
   [tailwind]: https://tailwindcss.com/
   [cloudinary]: https://cloudinary.com/
+  [grafbase]: https://grafbase.com/
   [prettier]: https://prettier.io/
