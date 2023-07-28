@@ -9,7 +9,7 @@ const Categories = () => {
   const searchParams = useSearchParams();
 
   const handleTags = (filter: string) => {
-    router.push(`${pathName}?category=${filter}`);
+    router.push(`${pathName}?=${filter}`);
   };
 
   const category = searchParams.get("category");
