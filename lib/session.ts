@@ -1,5 +1,6 @@
 import { SessionInterface, UserProfile } from "@/common.types";
-import { NextAuthOptions, User, getServerSession } from "next-auth";
+import { NextAuthOptions, User } from "next-auth";
+import { getServerSession } from "next-auth/next";
 import { AdapterUser } from "next-auth/adapters";
 import GoogleProvider from "next-auth/providers/google";
 import { createUser, getUser } from "./actions";
