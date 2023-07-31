@@ -12,6 +12,10 @@
 
 > ProjectsExpo allows its users to authenticate with Google, and upload and manage cards related to visible developments.
 
+### Take a look at the page
+
+ToBeUpdated
+
 A couple of technologies were employed in this project. Among them:
 
 - [ReactJS] - a JavaScript library for building user interfaces
