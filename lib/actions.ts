@@ -1,4 +1,5 @@
 import { ProjectForm } from "@/common.types";
+import { categoryFilters } from "@/constants";
 import {
   createProjectMutation,
   createUserMutation,
@@ -88,12 +89,14 @@ export const createNewProject = async (
 };
 
 export const fetchAllProjects = async (
-  category?: string | null | undefined,
-  endCursor?: string | null | undefined
+  category?: string | null,
+  endCursor?: string | null
 ) => {
   client.setHeader("x-api-key", apiKey);
 
-  return makeGraphQLRequest(projectsQuery, { category, endCursor });
+  const categories = category == null ? categoryFilters : [category];
+
+  return makeGraphQLRequest(projectsQuery, { categories, endCursor });
 };
 
 export const getProjectDetails = (id: string) => {
