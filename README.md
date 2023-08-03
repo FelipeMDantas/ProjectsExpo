@@ -16,6 +16,10 @@
 
 ToBeUpdated
 
+### or... give it a try!
+
+https://projects-expo.vercel.app/
+
 A couple of technologies were employed in this project. Among them:
 
 - [ReactJS] - a JavaScript library for building user interfaces
