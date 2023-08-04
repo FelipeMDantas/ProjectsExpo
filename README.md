@@ -14,7 +14,7 @@
 
 ### Take a look at the page
 
-ToBeUpdated
+<img src = images/page_gif.gif>
 
 ### or... give it a try!
 
